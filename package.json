@@ -1,0 +1,21 @@
+{
+  "name": "ebp_tool",
+  "version": "1.0.0",
+  "description": "EBP tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jointjs": "^3.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tinhtranbinhduong/ebp_tool.git"
+  },
+  "publishConfig": {
+    "registry": "https://github.com/tinhtranbinhduong/"
+  }
+}
