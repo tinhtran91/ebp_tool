@@ -55,7 +55,7 @@ class RFU_Magazine {
     }
 }
 
-BuildRfuMagazines = function (data) {
+export const BuildRfuMagazines = function (data) {
     var width = 180, gap = 19, height = 60, posy = 500, count = 0;
    // var store = "", ;
    // var data = rfumagazinedata.split("~");
