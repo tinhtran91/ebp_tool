@@ -1,23 +1,22 @@
-﻿import * as jointJS from "jointjs";
-
-// init grap
-const graph = new  joint.dia.Graph;
+﻿import * as joint from "jointjs";
 
 import { BuildBbuMagazines } from "./BBU_Magazine";
 import { BuildRfuMagazines } from "./RFU_Magazine";
 
 export const Draw = function (siteDetail, container) {
-    // init paper
-    var paper = new joint.dia.Paper({
+    // init grap
+    window.ebpGraph = new joint.dia.Graph;
+    window.ebpGraph.clear();
+
+    let paper = new joint.dia.Paper({
         el: document.getElementById(container), // container of diagram
-        model: graph,
+        model: window.ebpGraph,
         gridSize: 1,
-            interactive: function (cellView, method) {
-                    return cellView instanceof joint.dia.LinkView; // Only allow interaction with joint.dia.LinkView instances.
-            }
+        interactive: function (cellView, method) {
+            return cellView instanceof joint.dia.LinkView; // Only allow interaction with joint.dia.LinkView instances.
+        }
     });
 
-    graph.clear();
     paper.on('cell:mouseover',
         function (cellView, evt, x, y) {
             var cell = cellView.model;

@@ -1,4 +1,5 @@
-﻿import RFU_Board from "./RFU_Board";
+﻿import * as joint from "jointjs";
+import RFU_Board from "./RFU_Board";
 
 const RFU_Magazines = [];
 
@@ -32,7 +33,7 @@ class RFU_Magazine {
                 cursor: 'pointer'
             }
         });
-        this.drawing.addTo(graph);
+        this.drawing.addTo(window.ebpGraph);
         this.drawing.userclass = this;
     }
     BuildRfuBoards(data) {

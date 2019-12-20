@@ -1,4 +1,6 @@
-﻿class CPRI_Port{
+﻿import * as joint from "jointjs";
+
+class CPRI_Port {
     constructor(x, y, w, h, nodebname, cn, srn, sn, pn, data) {
         this.typename = "CPRI_Port";
         this.posX = x;
@@ -47,7 +49,7 @@
                 cursor: 'pointer',
             }
         });
-        this.drawing.addTo(graph);
+        this.drawing.addTo(window.ebpGraph);
         this.drawing.userclass = this;
     }
 }

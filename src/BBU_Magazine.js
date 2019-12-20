@@ -1,4 +1,5 @@
 // JavaScript source code
+import * as joint from "jointjs";
 import BBU_Board from "./BBU_Board";
 
 const BBU_Magazines = [];
@@ -44,14 +45,14 @@ class BBU_Magazine {
                 cursor: 'pointer'
             }
         });
-        this.drawing.addTo(graph);
+        this.drawing.addTo(window.ebpGraph);
         var element2 = new joint.dia.Link({
             source: { x: this.posX + this.width * 0.125, y: this.posY + this.height * 0.25 },
             target: { x: this.posX + this.width * 0.875, y: this.posY + this.height * 0.25 }
         });
         element2.attr('./pointer-events', 'none');
         //this.drawing.embed(element2);
-        graph.addCell(element2)
+        window.ebpGraph.addCell(element2)
 
         var element2 = new joint.dia.Link({
             source: { x: this.posX + this.width * 0.125, y: this.posY + this.height * 0.5 },
@@ -59,7 +60,7 @@ class BBU_Magazine {
         })
         element2.attr('./pointer-events', 'none');
         //this.drawing.embed(element2);
-        graph.addCell(element2)
+        window.ebpGraph.addCell(element2)
 
         var element2 = new joint.dia.Link({
             source: { x: this.posX + this.width * 0.125, y: this.posY + this.height * 0.75 },
@@ -67,7 +68,7 @@ class BBU_Magazine {
         });
         element2.attr('./pointer-events', 'none');
         //this.drawing.embed(element2);
-        graph.addCell(element2)
+        window.ebpGraph.addCell(element2)
 
         var element2 = new joint.dia.Link({
             source: { x: this.posX + this.width * 0.125, y: this.posY },
@@ -75,7 +76,7 @@ class BBU_Magazine {
         })
         element2.attr('./pointer-events', 'none');
         //this.drawing.embed(element2);
-        graph.addCell(element2)
+        window.ebpGraph.addCell(element2)
 
         var element2 = new joint.dia.Link({
             source: { x: this.posX + this.width * 0.5, y: this.posY },
@@ -83,7 +84,7 @@ class BBU_Magazine {
         })
         element2.attr('./pointer-events', 'none');
         //this.drawing.embed(element2);
-        graph.addCell(element2);
+        window.ebpGraph.addCell(element2);
 
         var element2 = new joint.dia.Link({
             source: { x: this.posX + this.width * 0.875, y: this.posY },
@@ -91,7 +92,7 @@ class BBU_Magazine {
         })
         element2.attr('./pointer-events', 'none');
         //this.drawing.embed(element2);
-        graph.addCell(element2);
+        window.ebpGraph.addCell(element2);
         this.drawing.userclass = this;
     }
     BuildBBU_Boards(data) {

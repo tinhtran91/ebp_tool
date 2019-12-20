@@ -1,4 +1,6 @@
-﻿class RF_Port {
+﻿import * as joint from "jointjs";
+
+class RF_Port {
     constructor(x, y, w, h, text, nodebname, cn, srn, sn, pn, sector, cell, tmaon, usage, freq = "") {
         this.typename = "RF_Port";
         this.posX = x;
@@ -96,7 +98,7 @@
             }
         });
 
-        this.drawing.addTo(graph);
+        this.drawing.addTo(window.ebpGraph);
         //this.drawing.typename = this.typename;
         this.drawing.userclass = this;
     }

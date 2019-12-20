@@ -1,4 +1,6 @@
-﻿import CPRI_Port from "./CPRI_Port";
+﻿import * as joint from "jointjs";
+
+import CPRI_Port from "./CPRI_Port";
 import RF_Port from "./RF_Port";
 
 class RFU_Board {
@@ -60,7 +62,7 @@ class RFU_Board {
                 cursor: 'pointer'
             }
         });
-        this.drawing.addTo(graph);
+        this.drawing.addTo(window.ebpGraph);
         this.drawing.userclass = this;
     }
     BuildCpriPorts() {
