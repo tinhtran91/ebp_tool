@@ -1,5 +1,6 @@
 ﻿import * as joint from "jointjs";
 import RFU_Board from "./RFU_Board";
+import GlobalScope from "./GlobalScope";
 
 class RFU_Magazine {
     constructor(x, y, w, h, cn, srn, data) {
@@ -31,7 +32,7 @@ class RFU_Magazine {
                 cursor: 'pointer'
             }
         });
-        this.drawing.addTo(window.ebpGraph);
+        this.drawing.addTo(GlobalScope.ebpGraph);
         this.drawing.userclass = this;
     }
     BuildRfuBoards(data) {
@@ -54,7 +55,7 @@ class RFU_Magazine {
 export const BuildRfuMagazines = function (data) {
     var width = 180, gap = 19, height = 60, posy = 500, count = 0;
     for (var i = 0; i < data.length; i++) {
-            window.RFU_Magazines[i] = new RFU_Magazine(count++ * (width + gap), posy, width, height, data[i].cn, data[i].srn, data[i]);
+        GlobalScope.RFU_Magazines[i] = new RFU_Magazine(count++ * (width + gap), posy, width, height, data[i].cn, data[i].srn, data[i]);
     }
 }
 

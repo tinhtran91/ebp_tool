@@ -1,6 +1,7 @@
 ﻿import * as joint from "jointjs";
 import RF_Port from "./RF_Port";
 import CPRI_Port from "./CPRI_Port";
+import GlobalScope from "./GlobalScope";
 
 class RRU {
     constructor(x, y, w, h, data) {
@@ -64,7 +65,7 @@ class RRU {
                 cursor: 'pointer'
             }
         });
-        this.drawing.addTo(window.ebpGraph);
+        this.drawing.addTo(GlobalScope.ebpGraph);
         this.drawing.userclass = this;
     }
     BuildCpriPorts() {
@@ -99,10 +100,10 @@ class RRU {
 }
 
 export const BuildRRUs = function (data) {
-    var widthperport = 15, gap = 10, height = 35, posx = window.margin, posy = 160;
+    var widthperport = 15, gap = 10, height = 35, posx = GlobalScope.margin, posy = 160;
     for (var i = 0; i < data.length; i++) {
         var obj = new RRU(posx, posy, widthperport, height, data[i]);
-        window.RRUs.push(obj);
+        GlobalScope.RRUs.push(obj);
         posx += obj.width + gap;
     }
 }

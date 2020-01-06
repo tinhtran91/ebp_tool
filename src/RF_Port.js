@@ -1,4 +1,5 @@
 ﻿import * as joint from "jointjs";
+import GlobalScope from "./GlobalScope";
 
 class RF_Port {
     constructor(x, y, w, h, text, nodebname, cn, srn, sn, pn, sector, cell, tmaon, usage, freq = "") {
@@ -98,7 +99,7 @@ class RF_Port {
             }
         });
 
-        this.drawing.addTo(window.ebpGraph);
+        this.drawing.addTo(GlobalScope.ebpGraph);
         //this.drawing.typename = this.typename;
         this.drawing.userclass = this;
     }

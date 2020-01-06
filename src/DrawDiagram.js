@@ -9,15 +9,16 @@ import { BuildTMAs } from "./TMA";
 import { BuildCombiners } from "./Combiner";
 import { BuildFeeders } from "./Feeder";
 import { BuildExternalConnectionPoints } from "./ExternalConnectionPoint";
+import GlobalScope from "./GlobalScope";
 
 export const Draw = function (siteDetail, container) {
     // init grap
-    window.ebpGraph = new joint.dia.Graph;
-    window.ebpGraph.clear();
+    GlobalScope.ebpGraph = new joint.dia.Graph;
+    GlobalScope.ebpGraph.clear();
 
     let paper = new joint.dia.Paper({
-        el: document.getElementById(container), // container of diagram
-        model: window.ebpGraph,
+        el: container, // container of diagram
+        model: GlobalScope.ebpGraph,
         gridSize: 1,
         interactive: function (cellView, method) {
             return cellView instanceof joint.dia.LinkView; // Only allow interaction with joint.dia.LinkView instances.
@@ -53,21 +54,20 @@ export const Draw = function (siteDetail, container) {
         }
     );
 
-    window.margin = 20;
-    window.BBU_Magazines = [];
+    GlobalScope.BBU_Magazines = [];
     BuildBbuMagazines(siteDetail.bbuDataMagazines);
-    window.RFU_Magazines = [];
+    GlobalScope.RFU_Magazines = [];
     BuildRfuMagazines(siteDetail.rfuDataMagazines);
-    window.Antennas = [];
+    GlobalScope.Antennas = [];
     BuildAntennas(siteDetail.antennas);
-    window.RRUs = [];
+    GlobalScope.RRUs = [];
     BuildRRUs(siteDetail.rrus);
-    window.TMAs = [];
+    GlobalScope.TMAs = [];
     BuildTMAs(siteDetail.tmas);
-    window.Combiners = [];
+    GlobalScope.Combiners = [];
     BuildCombiners(siteDetail.combiners);
-    window.Feeders = [];
+    GlobalScope.Feeders = [];
     BuildFeeders(siteDetail.feeders);
-    window.ExternalConnectionPoints = [];
+    GlobalScope.ExternalConnectionPoints = [];
     BuildExternalConnectionPoints(siteDetail.externalConnections)
 }

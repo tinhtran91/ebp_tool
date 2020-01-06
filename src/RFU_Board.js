@@ -2,6 +2,7 @@
 
 import CPRI_Port from "./CPRI_Port";
 import RF_Port from "./RF_Port";
+import GlobalScope from "./GlobalScope";
 
 class RFU_Board {
     constructor(x, y, w, h, nodeb, cn, srn, sn, data) {
@@ -62,7 +63,7 @@ class RFU_Board {
                 cursor: 'pointer'
             }
         });
-        this.drawing.addTo(window.ebpGraph);
+        this.drawing.addTo(GlobalScope.ebpGraph);
         this.drawing.userclass = this;
     }
     BuildCpriPorts() {

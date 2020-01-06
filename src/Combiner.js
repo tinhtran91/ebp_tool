@@ -1,5 +1,6 @@
 ﻿import * as joint from "jointjs";
 import RF_Port from "./RF_Port";
+import GlobalScope from "./GlobalScope";
 
 class Combiner {
     constructor(x, y, w, h, data) {
@@ -74,7 +75,7 @@ class Combiner {
                 cursor: 'pointer'
             }
         });
-        this.drawing.addTo(window.ebpGraph);
+        this.drawing.addTo(GlobalScope.ebpGraph);
         this.drawing.userclass = this;
     }
 
@@ -111,7 +112,7 @@ class Combiner {
 }
 
 export const BuildCombiners = function (data) {
-    var width = 10, gap = 10, height = 30, posx = window.margin, lastsector = "";
+    var width = 10, gap = 10, height = 30, posx = GlobalScope.margin, lastsector = "";
     var outdoorPosY = 90, outdoorUposY = 275, indoor1posY = 420, indoor2posY = 350, indoor3posY = 300;
 
     for (var i = 0; i < data.length; i++) {
@@ -122,10 +123,10 @@ export const BuildCombiners = function (data) {
          //   posx = GetAntennaPosition(sector)[0];
         }
         var obj = new Combiner(posx, indoor1posY, width, height, data[i]);
-        window.Combiners.push(obj);
+        GlobalScope.Combiners.push(obj);
         posx += obj.width + gap;
     }
-    posx = window.margin;
+    posx = GlobalScope.margin;
     for (var i = 0; i < data.length; i++) {
         if (data[i].placement != "Indoor2") continue;
         var sector = data[i].sector;
@@ -134,10 +135,10 @@ export const BuildCombiners = function (data) {
         //    posx = GetAntennaPosition(sector)[0];
         }
         var obj = new Combiner(posx, indoor2posY, width, height, data[i]);
-        window.Combiners.push(obj);
+        GlobalScope.Combiners.push(obj);
         posx += obj.width + gap;
     }
-    posx = window.margin;
+    posx = GlobalScope.margin;
     for (var i = 0; i < data.length; i++) {
         if (data[i].placement != "Indoor3") continue;
         var sector = data[i].sector;
@@ -146,10 +147,10 @@ export const BuildCombiners = function (data) {
         //    posx = GetAntennaPosition(sector)[0];
         }
         var obj = new Combiner(posx, indoor3posY, width, height, data[i]);
-        window.Combiners.push(obj);
+        GlobalScope.Combiners.push(obj);
         posx += obj.width + gap;
     }
-    posx = window.margin;
+    posx = GlobalScope.margin;
     for (var i = 0; i < data.length; i++) {
         if (data[i].placement != "Outdoor") continue;
         var sector = data[i].sector;
@@ -159,10 +160,10 @@ export const BuildCombiners = function (data) {
          //   else posx = GetAntennaHighBandPosition(sector)[0];
         }
         var obj = new Combiner(posx, outdoorPosY, width, height, data[i]);
-        window.Combiners.push(obj);
+        GlobalScope.Combiners.push(obj);
         posx += obj.width + gap;
     }
-    posx = window.margin;
+    posx = GlobalScope.margin;
     for (var i = 0; i < data.length; i++) {
         if (data[i].placement != "OutdoorU") continue;
         var sector = data[i].sector;
@@ -171,16 +172,16 @@ export const BuildCombiners = function (data) {
          //   posx = GetAntennaPosition(sector)[0];
         }
         var obj = new Combiner(posx, outdoorUposY, width, height, data[i]);
-        window.Combiners.push(obj);
+        GlobalScope.Combiners.push(obj);
         posx += obj.width + gap;
     }
 };
 
 export const GetCombinerOutPortPosXGreaterThanPosX = function (sector, frequency, greaterthanX) {
-    for (var i = 0; i < window.Combiners.length; i++) {
-        if (window.Combiners[i].sector == sector) {
-            for (var i2 = 0; i2 < window.Combiners[i].RF_OutPorts.length; i2++) {
-                var port = window.Combiners[i].RF_OutPorts[i2];
+    for (var i = 0; i < GlobalScope.Combiners.length; i++) {
+        if (GlobalScope.Combiners[i].sector == sector) {
+            for (var i2 = 0; i2 < GlobalScope.Combiners[i].RF_OutPorts.length; i2++) {
+                var port = GlobalScope.Combiners[i].RF_OutPorts[i2];
                 if (CheckFrequency(frequency, port.frequency)) {
                     if (port.posX > greaterthanX) return (port.posX);
                 }

@@ -1,5 +1,6 @@
 ﻿import * as joint from "jointjs";
 import RF_Port from "./RF_Port";
+import GlobalScope from "./GlobalScope";
 
 class AntennaPanel {
     constructor(x, y, w, h, data) {
@@ -57,7 +58,7 @@ class AntennaPanel {
             }
         });
 
-        this.drawing.addTo(window.ebpGraph);
+        this.drawing.addTo(GlobalScope.ebpGraph);
         this.drawing.userclass = this;
     }
     SetPanelColorByBand() {

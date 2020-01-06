@@ -1,5 +1,6 @@
 ﻿import * as joint from "jointjs";
 import AntennaPanel from "./AntennaPanel";
+import GlobalScope from "./GlobalScope";
 
  class Antenna {
     constructor(x, y, pw, ph, data) {
@@ -46,7 +47,7 @@ import AntennaPanel from "./AntennaPanel";
                 cursor: 'pointer'
             }
         });
-        this.drawing.addTo(window.ebpGraph);
+        this.drawing.addTo(GlobalScope.ebpGraph);
         this.drawing.userclass = this;
     }
 
@@ -59,32 +60,32 @@ import AntennaPanel from "./AntennaPanel";
 }
 
 export const BuildAntennas = function (data) {
-    var lastsector = "", panelwidth = 30, gap = 19, panelheight = 40, posX = window.margin, lastsector = "", count = 0, posY = 16;
+    var lastsector = "", panelwidth = 30, gap = 19, panelheight = 40, posX = GlobalScope.margin, lastsector = "", count = 0, posY = 16;
     //, data = antennadata.split("~");
     for (var i = 0; i < data.length; i++) {
         var sector = data[i].sector;
         if (lastsector != sector){
             lastsector = sector;
-            posX = 250 * count++ + window.margin;
+            posX = 250 * count++ + GlobalScope.margin;
         }
-        window.Antennas[i] = new Antenna(posX, posY, panelwidth, panelheight, data[i]);
-        posX = window.Antennas[i].width + gap;
-        lastsector = window.Antennas[i].sector;
+        GlobalScope.Antennas[i] = new Antenna(posX, posY, panelwidth, panelheight, data[i]);
+        posX = GlobalScope.Antennas[i].width + gap;
+        lastsector = GlobalScope.Antennas[i].sector;
     }
 };
 
 export const GetAntennaPosition = function (sector) {
-    for (var i = 0; i < window.Antennas.length; i++) {
-        if (window.Antennas[i].sector == sector) {
-            return ([window.Antennas[i].posX, window.Antennas[i].posY]);
+    for (var i = 0; i < GlobalScope.Antennas.length; i++) {
+        if (GlobalScope.Antennas[i].sector == sector) {
+            return ([GlobalScope.Antennas[i].posX, GlobalScope.Antennas[i].posY]);
         }
     }
 };
 
 export const GetAntennaHighBandPosition = function (sector) {
-    for (var i = 0; i < window.Antennas.length; i++) {
-        if (window.Antennas[i].sector == sector) {
-            var ant = window.Antennas[i];
+    for (var i = 0; i < GlobalScope.Antennas.length; i++) {
+        if (GlobalScope.Antennas[i].sector == sector) {
+            var ant = GlobalScope.Antennas[i];
             for (var i2 = 0; i2 < ant.AntennaPanels.length; i2++) {
                 var panel = ant.AntennaPanels[i2];
                 //for (var i3 = 0; i3 < ant.AntennaPanels[i2].RF_Ports.length; i3++) {
@@ -100,9 +101,9 @@ export const GetAntennaHighBandPosition = function (sector) {
 };
 
 export const GetAntennaOutPortPosXGreaterThanPosX = function (sector, frequency, greaterthanX) {
-    for (var i = 0; i < window.Antennas.length; i++) {
-        if (window.Antennas[i].sector == sector) {
-            var ant = window.Antennas[i];
+    for (var i = 0; i < GlobalScope.Antennas.length; i++) {
+        if (GlobalScope.Antennas[i].sector == sector) {
+            var ant = GlobalScope.Antennas[i];
             for (var i2 = 0; i2 < ant.AntennaPanels.length; i2++) {
                 for (var i3 = 0; i3 < ant.AntennaPanels[i2].RF_Ports.length; i3++) {
                     var port = ant.AntennaPanels[i2].RF_Ports[i3];

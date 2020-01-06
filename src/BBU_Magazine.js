@@ -1,6 +1,7 @@
 // JavaScript source code
 import * as joint from "jointjs";
 import BBU_Board from "./BBU_Board";
+import GlobalScope from "./GlobalScope";
 
 class BBU_Magazine {
     constructor(x, y, w, h, data) {
@@ -43,14 +44,14 @@ class BBU_Magazine {
                 cursor: 'pointer'
             }
         });
-        this.drawing.addTo(window.ebpGraph);
+        this.drawing.addTo(GlobalScope.ebpGraph);
         var element2 = new joint.dia.Link({
             source: { x: this.posX + this.width * 0.125, y: this.posY + this.height * 0.25 },
             target: { x: this.posX + this.width * 0.875, y: this.posY + this.height * 0.25 }
         });
         element2.attr('./pointer-events', 'none');
         //this.drawing.embed(element2);
-        window.ebpGraph.addCell(element2)
+        GlobalScope.ebpGraph.addCell(element2)
 
         var element2 = new joint.dia.Link({
             source: { x: this.posX + this.width * 0.125, y: this.posY + this.height * 0.5 },
@@ -58,7 +59,7 @@ class BBU_Magazine {
         })
         element2.attr('./pointer-events', 'none');
         //this.drawing.embed(element2);
-        window.ebpGraph.addCell(element2)
+        GlobalScope.ebpGraph.addCell(element2)
 
         var element2 = new joint.dia.Link({
             source: { x: this.posX + this.width * 0.125, y: this.posY + this.height * 0.75 },
@@ -66,7 +67,7 @@ class BBU_Magazine {
         });
         element2.attr('./pointer-events', 'none');
         //this.drawing.embed(element2);
-        window.ebpGraph.addCell(element2)
+        GlobalScope.ebpGraph.addCell(element2)
 
         var element2 = new joint.dia.Link({
             source: { x: this.posX + this.width * 0.125, y: this.posY },
@@ -74,7 +75,7 @@ class BBU_Magazine {
         })
         element2.attr('./pointer-events', 'none');
         //this.drawing.embed(element2);
-        window.ebpGraph.addCell(element2)
+        GlobalScope.ebpGraph.addCell(element2)
 
         var element2 = new joint.dia.Link({
             source: { x: this.posX + this.width * 0.5, y: this.posY },
@@ -82,7 +83,7 @@ class BBU_Magazine {
         })
         element2.attr('./pointer-events', 'none');
         //this.drawing.embed(element2);
-        window.ebpGraph.addCell(element2);
+        GlobalScope.ebpGraph.addCell(element2);
 
         var element2 = new joint.dia.Link({
             source: { x: this.posX + this.width * 0.875, y: this.posY },
@@ -90,7 +91,7 @@ class BBU_Magazine {
         })
         element2.attr('./pointer-events', 'none');
         //this.drawing.embed(element2);
-        window.ebpGraph.addCell(element2);
+        GlobalScope.ebpGraph.addCell(element2);
         this.drawing.userclass = this;
     }
     BuildBBU_Boards(data) {
@@ -126,7 +127,7 @@ export const BuildBbuMagazines = function (data)
     var stepx = 300, posy = 600, width = 280, height = 80;
     for (var i = 0; i < data.length; i++)
     {
-        window.BBU_Magazines.push(new BBU_Magazine(i * stepx, posy, width, height, data[i]));
+        GlobalScope.BBU_Magazines.push(new BBU_Magazine(i * stepx, posy, width, height, data[i]));
     }
 }
 

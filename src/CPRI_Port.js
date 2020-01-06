@@ -1,4 +1,5 @@
 ﻿import * as joint from "jointjs";
+import GlobalScope from "./GlobalScope";
 
 class CPRI_Port {
     constructor(x, y, w, h, nodebname, cn, srn, sn, pn, data) {
@@ -49,7 +50,7 @@ class CPRI_Port {
                 cursor: 'pointer',
             }
         });
-        this.drawing.addTo(window.ebpGraph);
+        this.drawing.addTo(GlobalScope.ebpGraph);
         this.drawing.userclass = this;
     }
 }

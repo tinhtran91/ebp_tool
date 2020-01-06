@@ -1,5 +1,6 @@
 ﻿import * as joint from "jointjs";
 import RF_Port from "./RF_Port";
+import GlobalScope from "./GlobalScope";
 
 class Feeder {
     constructor(x, y, w, h, data) {
@@ -46,7 +47,7 @@ class Feeder {
                 cursor: 'pointer'
             }
         });
-        this.drawing.addTo(window.ebpGraph);
+        this.drawing.addTo(GlobalScope.ebpGraph);
         this.drawing.userclass = this;
     }
     BuildFeederConnectors() {

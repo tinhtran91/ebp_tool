@@ -1,5 +1,6 @@
 ﻿import * as joint from "jointjs";
 import CPRI_Port from "./CPRI_Port";
+import GlobalScope from "./GlobalScope";
 
 class BBU_Board
 {
@@ -62,7 +63,7 @@ class BBU_Board
                 cursor: 'pointer',
             }
         });
-        this.drawing.addTo(window.ebpGraph);
+        this.drawing.addTo(GlobalScope.ebpGraph);
         this.drawing.userclass = this;
     }
     BuildCpriPorts(data)

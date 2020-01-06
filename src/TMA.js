@@ -1,5 +1,6 @@
 ﻿import * as joint from "jointjs";
 import RF_Port from "./RF_Port";
+import GlobalScope from "./GlobalScope";
 
 class TMA {
     constructor(x, y, w, h, data) {
@@ -73,7 +74,7 @@ class TMA {
             }
         });
 
-        this.drawing.addTo(window.ebpGraph);
+        this.drawing.addTo(GlobalScope.ebpGraph);
         this.drawing.userclass = this;
     }
 
@@ -112,19 +113,19 @@ class TMA {
 }
 
 export const BuildTMAs = function (data) {
-    var widthperport = 15, gap = 10, height = 35, posx = window.margin, posy = 230;
+    var widthperport = 15, gap = 10, height = 35, posx = GlobalScope.margin, posy = 230;
     for (var i = 0; i < data.length; i++) {
         var obj  = new TMA(posx, posy, widthperport, height, data[i]);
-        window.TMAs.push(obj);
+        GlobalScope.TMAs.push(obj);
         posx += obj.width + gap;
    }
 }
 
 export const GetTmaInPortPosXGreaterThanPosX = function (sector, frequency, greaterthanX) {
-    for (var i = 0; i < window.TMAs.length; i++) {
-        if (window.TMAs[i].sector == sector) {
-            for (var i2 = 0; i2 < window.TMAs[i].RF_InPorts.length; i2++) {
-                var port = window.TMAs[i].RF_InPorts[i2];
+    for (var i = 0; i < GlobalScope.TMAs.length; i++) {
+        if (GlobalScope.TMAs[i].sector == sector) {
+            for (var i2 = 0; i2 < GlobalScope.TMAs[i].RF_InPorts.length; i2++) {
+                var port = GlobalScope.TMAs[i].RF_InPorts[i2];
                 if (CheckFrequency(frequency, port.frequency)) {
                     if (port.posX > greaterthanX) return (port.posX);
                 }

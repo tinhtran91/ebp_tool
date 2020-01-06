@@ -1,4 +1,5 @@
 ﻿import RF_Port from "./RF_Port";
+import GlobalScope from "./GlobalScope";
 
 class ExternalConnectionPoint{
     constructor(x, y, w, h, who, data) {
@@ -61,22 +62,22 @@ export const BuildExternalConnectionPoints = function (data) {
 
     for (var i = 0; i < data.length; i++) {
         var flag = -1;
-        for (var i2 = 0; i2 < window.ExternalConnectionPoints.length; i2++) {
+        for (var i2 = 0; i2 < GlobalScope.ExternalConnectionPoints.length; i2++) {
 
-            if (window.ExternalConnectionPoints[i2].position == data[i].position) {
+            if (GlobalScope.ExternalConnectionPoints[i2].position == data[i].position) {
                 flag = i2;
                 break;
             }
         }
         if (flag != -1) {
-            window.ExternalConnectionPoints[flag].AddConnection(data[i]);
+            GlobalScope.ExternalConnectionPoints[flag].AddConnection(data[i]);
         }
         else {
             if (data[i].position == "Outdoor1") posy = 100;
             else if (data[i].position == "Indoor1") posy = 500;
             else if (data[i].position == "Indoor2") posy = 300;
             //alert(data[i].position);
-            window.ExternalConnectionPoints.push(new ExternalConnectionPoint(posx, posy, width, height, "Optus", data[i]));
+            GlobalScope.ExternalConnectionPoints.push(new ExternalConnectionPoint(posx, posy, width, height, "Optus", data[i]));
         }
     }
 }

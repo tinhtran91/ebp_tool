@@ -17,7 +17,7 @@ import * as ebpTool from "ebp_tool";
 
 - Call method ebpTool.Draw to draw diagram. You can use mockup data below to bind into data parameter
 ```
-ebpTool.Draw(data, "diagram-holder");
+ebpTool.Draw(data, document.getElementById("diagram-holder"));
 ```
 
 # 3. Mockup data
