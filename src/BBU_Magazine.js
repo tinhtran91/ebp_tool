@@ -2,8 +2,6 @@
 import * as joint from "jointjs";
 import BBU_Board from "./BBU_Board";
 
-const BBU_Magazines = [];
-
 class BBU_Magazine {
     constructor(x, y, w, h, data) {
         this.typename = "BBU_Magazine";
@@ -128,7 +126,7 @@ export const BuildBbuMagazines = function (data)
     var stepx = 300, posy = 600, width = 280, height = 80;
     for (var i = 0; i < data.length; i++)
     {
-        BBU_Magazines.push(new BBU_Magazine(i * stepx, posy, width, height, data[i]));
+        window.BBU_Magazines.push(new BBU_Magazine(i * stepx, posy, width, height, data[i]));
     }
 }
 

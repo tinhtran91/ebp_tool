@@ -1,7 +1,14 @@
-﻿import * as joint from "jointjs";
+﻿import "jointjs/dist/joint.css";
+import * as joint from "jointjs";
 
 import { BuildBbuMagazines } from "./BBU_Magazine";
 import { BuildRfuMagazines } from "./RFU_Magazine";
+import { BuildAntennas } from "./Antenna";
+import { BuildRRUs } from "./RRU";
+import { BuildTMAs } from "./TMA";
+import { BuildCombiners } from "./Combiner";
+import { BuildFeeders } from "./Feeder";
+import { BuildExternalConnectionPoints } from "./ExternalConnectionPoint";
 
 export const Draw = function (siteDetail, container) {
     // init grap
@@ -46,6 +53,21 @@ export const Draw = function (siteDetail, container) {
         }
     );
 
+    window.margin = 20;
+    window.BBU_Magazines = [];
     BuildBbuMagazines(siteDetail.bbuDataMagazines);
+    window.RFU_Magazines = [];
     BuildRfuMagazines(siteDetail.rfuDataMagazines);
+    window.Antennas = [];
+    BuildAntennas(siteDetail.antennas);
+    window.RRUs = [];
+    BuildRRUs(siteDetail.rrus);
+    window.TMAs = [];
+    BuildTMAs(siteDetail.tmas);
+    window.Combiners = [];
+    BuildCombiners(siteDetail.combiners);
+    window.Feeders = [];
+    BuildFeeders(siteDetail.feeders);
+    window.ExternalConnectionPoints = [];
+    BuildExternalConnectionPoints(siteDetail.externalConnections)
 }

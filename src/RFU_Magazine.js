@@ -1,8 +1,6 @@
 ﻿import * as joint from "jointjs";
 import RFU_Board from "./RFU_Board";
 
-const RFU_Magazines = [];
-
 class RFU_Magazine {
     constructor(x, y, w, h, cn, srn, data) {
         this.typename = "RFU_Magazine";
@@ -37,10 +35,7 @@ class RFU_Magazine {
         this.drawing.userclass = this;
     }
     BuildRfuBoards(data) {
-       // var d = data.split(",");
         for (var i=0; i<data.length; i++) {
-            //if (data[i] == this.cn && data[i] == this.srn) {
-                //var d2 = d[3+i].split("*");
                 this.CreateRfuBoard(data[i].sn, data[i]);
            // }
         }
@@ -58,16 +53,8 @@ class RFU_Magazine {
 
 export const BuildRfuMagazines = function (data) {
     var width = 180, gap = 19, height = 60, posy = 500, count = 0;
-   // var store = "", ;
-   // var data = rfumagazinedata.split("~");
     for (var i = 0; i < data.length; i++) {
-       // if (store.indexOf(""+data[i].cn + data[i].srn + ",") == -1) {
-       //     store += ""+data[i].cn + data[i].srn + ",";
-            //RFU_Magazines[i] = new RFU_Magazine(i * (width + gap), posy, width, height, data);
-                        RFU_Magazines[i] = new RFU_Magazine(count++ * (width + gap), posy, width, height, data[i].cn, data[i].srn, data[i]);
-       // }
-
-        //RFU_Magazines[i].BuildRfuBoards();
+            window.RFU_Magazines[i] = new RFU_Magazine(count++ * (width + gap), posy, width, height, data[i].cn, data[i].srn, data[i]);
     }
 }
 
