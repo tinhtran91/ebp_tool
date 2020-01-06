@@ -61,7 +61,7 @@ export const BuildExternalConnectionPoints = function (data) {
 
     for (var i = 0; i < data.length; i++) {
         var flag = -1;
-        for (i2 = 0; i2 < window.ExternalConnectionPoints.length; i2++) {
+        for (var i2 = 0; i2 < window.ExternalConnectionPoints.length; i2++) {
 
             if (window.ExternalConnectionPoints[i2].position == data[i].position) {
                 flag = i2;
